@@ -3,7 +3,19 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <title>Prayer Time Display</title>
+    <script src="/js/hijri-date.js"></script>
+
 </head>
+
+
+<body>
+<div id="islamic-date"></div>
+<script>
+    var islamicDateElement = document.getElementById("islamic-date");
+    islamicDateElement.innerHTML = writeIslamicDate();
+</script>
+</body>
+
 
 <body onload="displayTime()">
 <div id="current-time-container">
@@ -12,9 +24,8 @@
 </div>
 
 <div id="settings-container" style="display: none;">
-    <label for="toggle-additional-columns"></label><input type="checkbox" id="toggle-additional-columns"> Show Sunnah Rawatib
+    <input type="checkbox" id="toggle-additional-columns"> Show Sunnah Rawatib
 </div>
-
 
 <table id="prayer-times">
     <thead>

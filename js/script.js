@@ -8,7 +8,7 @@ setInterval(displayTime, 1000);
 const toggleCheckbox = document.querySelector('#toggle-additional-columns');
 const additionalColumns = document.querySelectorAll('.additional-column');
 
-toggleCheckbox.addEventListener('change', function() {
+toggleCheckbox.addEventListener('change', function () {
     for (let column of additionalColumns) {
         if (this.checked) {
             column.style.display = 'table-cell';
@@ -20,7 +20,7 @@ toggleCheckbox.addEventListener('change', function() {
 
 const settingsContainer = document.querySelector('#settings-container');
 const settingsIcon = document.querySelector('#settings-icon');
-settingsIcon.addEventListener('click', function() {
+settingsIcon.addEventListener('click', function () {
     if (settingsContainer.style.display === 'none') {
         settingsContainer.style.display = 'block';
     } else {
