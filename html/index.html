@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>Prayer Time Display</title>
+</head>
+
+<body onload="displayTime()">
+<div id="current-time-container">
+    Current Time and Date: <span id="current-time"></span>
+    <img id="settings-icon" src="/images/settings-icon.png" alt="Settings Icon">
+</div>
+
+<div id="settings-container" style="display: none;">
+    <label for="toggle-additional-columns"></label><input type="checkbox" id="toggle-additional-columns"> Show Sunnah Rawatib
+</div>
+
+
+<table id="prayer-times">
+    <thead>
+    <tr>
+        <th>Prayer</th>
+        <th>Time</th>
+        <th class="additional-column" style="display: none;">Before</th>
+        <th class="additional-column" style="display: none;">After</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Fajr</td>
+        <td><?php echo $fajr;?></td>
+        <td class="additional-column" style="display: none;">2</td>
+        <td class="additional-column" style="display: none;">0</td>
+    </tr>
+    <tr>
+        <td>Dhuhr</td>
+        <td><?php echo $dhuhr;?></td>
+        <td class="additional-column" style="display: none;">2+2</td>
+        <td class="additional-column" style="display: none;">2</td>
+    </tr>
+    <tr>
+        <td>Asr</td>
+        <td><?php echo $asr;?></td>
+        <td class="additional-column" style="display: none;">0</td>
+        <td class="additional-column" style="display: none;">0</td>
+    </tr>
+    <tr>
+        <td>Maghrib</td>
+        <td><?php echo $maghrib;?></td>
+        <td class="additional-column" style="display: none;">0</td>
+        <td class="additional-column" style="display: none;">2</td>
+    </tr>
+    <tr>
+        <td>Isha</td>
+        <td><?php echo $isha;?></td>
+        <td class="additional-column" style="display: none;">0</td>
+        <td class="additional-column" style="display: none;">2</td>
+    </tr>
+    </tbody>
+</table>
+<script src="/js/script.js"></script>
+
+</body>
+
+</html>
