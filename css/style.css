@@ -8,6 +8,12 @@ body {
     text-align: center;
 }
 
+#hijri-date {
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
 table {
     width: 80%;
     margin: 0 auto;
@@ -29,17 +35,6 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-@media screen and (orientation: portrait) {
-    table {
-        width: 100%;
-    }
-}
-
-@media screen and (orientation: landscape) {
-    table {
-        width: 60%;
-    }
-}
 
 .additional-column {
     display: table-cell;
