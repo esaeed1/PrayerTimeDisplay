@@ -1,5 +1,6 @@
 body {
     font-family: Arial, sans-serif;
+    padding-top: 50px;
 }
 
 #current-time-container {
@@ -40,18 +41,19 @@ tr:nth-child(even) {
     display: table-cell;
 }
 
-.settings-container {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    display: flex;
-    align-items: center;
+#settings-icon {
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    z-index: 9999;
 }
 
-.settings-icon {
-    width: 20px;
-    height: 20px;
-    background-color: #000;
-    border-radius: 50%;
-    margin-left: 10px;
+#settings-container {
+    position: fixed;
+    top: 50px;
+    right: 60px;
+    z-index: 9999;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
 }

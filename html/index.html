@@ -20,11 +20,14 @@
 <body onload="displayTime()">
 <div id="current-time-container">
     <span id="current-time"></span>
-    <img id="settings-icon" src="/images/settings-icon.png" alt="Settings Icon">
+</div>
+
+<div id="settings-icon">
+    <img src="/images/settings-icon.png" alt="Settings Icon">
 </div>
 
 <div id="settings-container" style="display: none;">
-    <input type="checkbox" id="toggle-additional-columns"> Show Sunnah Rawatib
+    <label for="toggle-additional-columns"></label><input type="checkbox" id="toggle-additional-columns"> Show Sunnah Rawatib
 </div>
 
 <table id="prayer-times">
