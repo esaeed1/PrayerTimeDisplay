@@ -56,4 +56,3 @@ toggleWeatherInfo.addEventListener('click', () => {
         weatherInfo.style.display = 'none';
     }
 });
-

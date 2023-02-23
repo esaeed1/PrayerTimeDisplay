@@ -57,3 +57,9 @@ tr:nth-child(even) {
     border: 1px solid #ccc;
     padding: 10px;
 }
+
+#weather-info {
+    position: absolute;
+    top: 0;
+    left: 10px;
+}
