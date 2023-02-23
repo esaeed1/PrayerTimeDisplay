@@ -1,5 +1,9 @@
 # PrayerTimeDisplay
 
+CSC 5750 
+Principles of Web Technology
+Term Project
+
 Prayer Time Display
 
 Using this to calculate hijri date 
