@@ -15,11 +15,17 @@ imageUpload.addEventListener("change", function () {
         // Create a new image element and set its src to the loaded file data
         const imageElement = document.createElement("img");
         imageElement.src = reader.result;
+        imageElement.style.maxHeight = "150px";
+        imageElement.style.width = "100%";
+        imageElement.style.objectFit = "cover";
 
-        // Add the image element to the current time container, at the very top
-        hijriDateContainer.prepend(imageElement);
+        // Add the image element to the top of the current time container
+        hijriDateContainer.insertBefore(imageElement, hijriDateContainer.firstChild);
     });
 
     // Read the selected file as a data URL
     reader.readAsDataURL(file);
 });
+
+// Center the hijri date text within its container
+hijriDateContainer.style.textAlign = "center";
