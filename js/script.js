@@ -56,3 +56,33 @@ toggleWeatherInfo.addEventListener('click', () => {
         weatherInfo.style.display = 'none';
     }
 });
+
+document.getElementById('file-upload').addEventListener('change', readFile, false);
+
+function readFile(evt) {
+    var file = evt.target.files[0];
+    var reader = new FileReader();
+    reader.onload = function() {
+        var csv = reader.result;
+        var lines = csv.split('\n');
+        var prayer_times = [];
+
+        for (var i = 1; i < lines.length; i++) {
+            var line = lines[i];
+            var parts = line.split(',');
+            prayer_times.push({
+                date: parts[0],
+                fajr: parts[1],
+                dhuhr: parts[2],
+                asr: parts[3],
+                maghrib: parts[4],
+                isha: parts[5]
+            });
+        }
+
+        // Do something with the prayer times array
+        console.log(prayer_times);
+    };
+
+    reader.readAsText(file);
+}

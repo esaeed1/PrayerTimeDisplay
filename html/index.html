@@ -33,6 +33,19 @@
     <br>
     <label for="image-upload">Upload Banner:</label>
     <input type="file" id="image-upload">
+    <br>
+    <form method="POST" action="/php/download.php">
+    <br>
+        <button type="submit" name="submit">Generate CSV</button>
+        <br>
+    <form action="/php/upload_prayer_times.php" method="post" enctype="multipart/form-data">
+        <label for="file-upload">Upload Prayer Times:</label>
+        <br>
+        <input type="file" id="file-upload" name="prayer_times_file">
+        <br>
+        <input type="submit" value="Upload">
+    </form>
+
 </div>
 
 <div id="weather-info" style="display:none;">
@@ -53,31 +66,31 @@
     <tbody>
     <tr>
         <td>Fajr</td>
-        <td><?php echo $fajr;?></td>
+        <td><?php echo format_am_pm($times[0]);?></td>
         <td class="additional-column" style="display: none;">2</td>
         <td class="additional-column" style="display: none;">0</td>
     </tr>
     <tr>
         <td>Dhuhr</td>
-        <td><?php echo $dhuhr;?></td>
+        <td><?php echo format_am_pm($times[2]);?></td>
         <td class="additional-column" style="display: none;">2+2</td>
         <td class="additional-column" style="display: none;">2</td>
     </tr>
     <tr>
         <td>Asr</td>
-        <td><?php echo $asr;?></td>
+        <td><?php echo format_am_pm($times[3]);?></td>
         <td class="additional-column" style="display: none;">0</td>
         <td class="additional-column" style="display: none;">0</td>
     </tr>
     <tr>
         <td>Maghrib</td>
-        <td><?php echo $maghrib;?></td>
+        <td><?php echo format_am_pm($times[5]);?></td>
         <td class="additional-column" style="display: none;">0</td>
         <td class="additional-column" style="display: none;">2</td>
     </tr>
     <tr>
         <td>Isha</td>
-        <td><?php echo $isha;?></td>
+        <td><?php echo format_am_pm($times[6]);?></td>
         <td class="additional-column" style="display: none;">0</td>
         <td class="additional-column" style="display: none;">2</td>
     </tr>
