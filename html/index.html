@@ -13,7 +13,6 @@
     hijriDateElement.innerHTML = writeHijriDate();
 </script>
 
-
 <body onload="displayTime()">
 <div id="current-time-container">
     <span id="current-time"></span>
@@ -34,19 +33,25 @@
     <label for="image-upload">Upload Banner:</label>
     <input type="file" id="image-upload">
     <br>
-    <form method="POST" action="/php/download.php">
-    <br>
+    <form method="POST" action="/php/downloadYearlyTime.php">
+        <br>
         <button type="submit" name="submit">Generate CSV</button>
         <br>
-    <form action="/php/upload_prayer_times.php" method="post" enctype="multipart/form-data">
-        <label for="file-upload">Upload Prayer Times:</label>
-        <br>
-        <input type="file" id="file-upload" name="prayer_times_file">
-        <br>
-        <input type="submit" value="Upload">
     </form>
-
 </div>
+
+<form method="post" enctype="multipart/form-data">
+    <label for="prayer_times_file">Upload prayer times CSV file:</label>
+    <input type="file" name="prayer_times_file" id="prayer_times_file">
+    <input type="submit" value="Upload">
+</form>
+
+<?php
+if (isset($_POST['prayer_times_file'])) {
+    include '/php/process_csv.php';
+}
+?>
+
 
 <div id="weather-info" style="display:none;">
     <p>Temperature: <span id="temperature"></span></p>
@@ -66,36 +71,37 @@
     <tbody>
     <tr>
         <td>Fajr</td>
-        <td><?php echo format_am_pm($times[0]);?></td>
+        <td><?php echo ($times[0]);?></td>
         <td class="additional-column" style="display: none;">2</td>
         <td class="additional-column" style="display: none;">0</td>
     </tr>
     <tr>
         <td>Dhuhr</td>
-        <td><?php echo format_am_pm($times[2]);?></td>
+        <td><?php echo ($times[2]);?></td>
         <td class="additional-column" style="display: none;">2+2</td>
         <td class="additional-column" style="display: none;">2</td>
     </tr>
     <tr>
         <td>Asr</td>
-        <td><?php echo format_am_pm($times[3]);?></td>
+        <td><?php echo ($times[3]);?></td>
         <td class="additional-column" style="display: none;">0</td>
         <td class="additional-column" style="display: none;">0</td>
     </tr>
     <tr>
         <td>Maghrib</td>
-        <td><?php echo format_am_pm($times[5]);?></td>
+        <td><?php echo ($times[5]);?></td>
         <td class="additional-column" style="display: none;">0</td>
         <td class="additional-column" style="display: none;">2</td>
     </tr>
     <tr>
         <td>Isha</td>
-        <td><?php echo format_am_pm($times[6]);?></td>
+        <td><?php echo ($times[6]);?></td>
         <td class="additional-column" style="display: none;">0</td>
         <td class="additional-column" style="display: none;">2</td>
     </tr>
     </tbody>
 </table>
+
 <script src="/js/script.js"></script>
 <script src="/js/image.js"></script>
 
