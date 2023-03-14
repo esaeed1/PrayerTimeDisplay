@@ -1,13 +1,7 @@
 // select the file input element
 const fileInput = document.getElementById('csv-file-input');
 const parseButton = document.getElementById('parse-csv-button');
-
-// select the prayer time elements
-const fajrTime = document.getElementById('fajr-time');
-const dhuhrTime = document.getElementById('dhuhr-time');
-const asrTime = document.getElementById('asr-time');
-const maghribTime = document.getElementById('maghrib-time');
-const ishaTime = document.getElementById('isha-time');
+const prayerTimesTable = document.getElementById('prayer-times');
 
 // listen for file upload event
 parseButton.addEventListener('click', () => {
@@ -36,18 +30,63 @@ parseButton.addEventListener('click', () => {
         }
 
         // get today's date
-        const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, "-");
+        const today = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+        }).replace(/\//g, "-");
 
         // find today's prayer time
         const todayPrayerTime = data.find((item) => item.Date === today);
         if (todayPrayerTime) {
-            fajrTime.textContent = todayPrayerTime.Fajr;
-            dhuhrTime.textContent = todayPrayerTime.Dhuhr;
-            asrTime.textContent = todayPrayerTime.Asr;
-            maghribTime.textContent = todayPrayerTime.Maghrib;
-            ishaTime.textContent = todayPrayerTime.Isha;
+            const fajrTime = todayPrayerTime.Fajr;
+            const dhuhrTime = todayPrayerTime.Dhuhr;
+            const asrTime = todayPrayerTime.Asr;
+            const maghribTime = todayPrayerTime.Maghrib;
+            const ishaTime = todayPrayerTime.Isha;
+
+            // update the table with the prayer times
+            const fajrTimeCell = document.getElementById('fajr-time');
+            const dhuhrTimeCell = document.getElementById('dhuhr-time');
+            const asrTimeCell = document.getElementById('asr-time');
+            const maghribTimeCell = document.getElementById('maghrib-time');
+            const ishaTimeCell = document.getElementById('isha-time');
+
+            fajrTimeCell.textContent = fajrTime;
+            dhuhrTimeCell.textContent = dhuhrTime;
+            asrTimeCell.textContent = asrTime;
+            maghribTimeCell.textContent = maghribTime;
+            ishaTimeCell.textContent = ishaTime;
+
+            // save the prayer times data to localStorage
+            const prayerTimesData = {
+                fajr: fajrTime,
+                dhuhr: dhuhrTime,
+                asr: asrTime,
+                maghrib: maghribTime,
+                isha: ishaTime
+            };
+            localStorage.setItem('prayerTimesData', JSON.stringify(prayerTimesData));
         } else {
             console.log('No prayer time data found for today.');
         }
     };
+});
+
+// check if prayer times data is available in localStorage on reload
+window.addEventListener('load', () => {
+    const prayerTimesData = localStorage.getItem('prayerTimesData');
+    if (prayerTimesData) {
+        const parsedData = JSON.parse(prayerTimesData);
+        const fajrTimeCell = document.getElementById('fajr-time');
+        const dhuhrTimeCell = document.getElementById('dhuhr-time');
+        const asrTimeCell = document.getElementById('asr-time');
+        const maghribTimeCell = document.getElementById('maghrib-time');
+        const ishaTimeCell = document.getElementById('isha-time');
+        fajrTimeCell.textContent = parsedData.fajr;
+        dhuhrTimeCell.textContent = parsedData.dhuhr;
+        asrTimeCell.textContent = parsedData.asr;
+        maghribTimeCell.textContent = parsedData.maghrib;
+        ishaTimeCell.textContent = parsedData.isha;
+    }
 });
