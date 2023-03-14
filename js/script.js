@@ -56,3 +56,20 @@ toggleWeatherInfo.addEventListener('click', () => {
         weatherInfo.style.display = 'none';
     }
 });
+
+var sunriseCheckbox = document.getElementById("toggle-sunrise");
+var sunriseRow = document.getElementById("sunrise-row");
+
+sunriseCheckbox.addEventListener("change", function() {
+    if (sunriseCheckbox.checked) {
+        sunriseRow.style.display = "table-row";
+    } else {
+        sunriseRow.style.display = "none";
+    }
+});
+
+
+function clearLocalStorage() {
+    localStorage.clear();
+    location.reload(true);
+}

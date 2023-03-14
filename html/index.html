@@ -30,6 +30,9 @@
     <input type="checkbox" id="toggle-weather-info">
     <label for="toggle-weather-info">Show Weather Info</label>
     <br>
+    <input type="checkbox" id="toggle-sunrise">
+    <label for="toggle-sunrise">Show Sunrise Time</label>
+    <br>
     <label for="image-upload">Upload Banner:</label>
     <input type="file" id="image-upload">
     <br>
@@ -68,7 +71,7 @@
         <td class="additional-column" style="display: none;">2</td>
         <td class="additional-column" style="display: none;">0</td>
     </tr>
-    <tr>
+    <tr id="sunrise-row" style="display: none;">
         <td>Sunrise</td>
         <td id="sunrise-time"></td>
     </tr>
@@ -102,6 +105,10 @@
 <script src="/js/script.js"></script>
 <script src="/js/image.js"></script>
 <script src="/js/csv.js"></script>
+
+<button onclick="clearLocalStorage()">Clear localStorage</button>
+
+
 
 </body>
 
