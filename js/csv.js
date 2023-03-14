@@ -40,6 +40,7 @@ parseButton.addEventListener('click', () => {
         const todayPrayerTime = data.find((item) => item.Date === today);
         if (todayPrayerTime) {
             const fajrTime = todayPrayerTime.Fajr;
+            const sunRiseTime = todayPrayerTime.Sunrise;
             const dhuhrTime = todayPrayerTime.Dhuhr;
             const asrTime = todayPrayerTime.Asr;
             const maghribTime = todayPrayerTime.Maghrib;
@@ -47,12 +48,14 @@ parseButton.addEventListener('click', () => {
 
             // update the table with the prayer times
             const fajrTimeCell = document.getElementById('fajr-time');
+            const sunRiseCell = document.getElementById('sunrise-time');
             const dhuhrTimeCell = document.getElementById('dhuhr-time');
             const asrTimeCell = document.getElementById('asr-time');
             const maghribTimeCell = document.getElementById('maghrib-time');
             const ishaTimeCell = document.getElementById('isha-time');
 
             fajrTimeCell.textContent = fajrTime;
+            sunRiseCell.textContent = sunRiseTime;
             dhuhrTimeCell.textContent = dhuhrTime;
             asrTimeCell.textContent = asrTime;
             maghribTimeCell.textContent = maghribTime;
@@ -61,6 +64,7 @@ parseButton.addEventListener('click', () => {
             // save the prayer times data to localStorage
             const prayerTimesData = {
                 fajr: fajrTime,
+                sunrise: sunRiseTime,
                 dhuhr: dhuhrTime,
                 asr: asrTime,
                 maghrib: maghribTime,
@@ -79,11 +83,13 @@ window.addEventListener('load', () => {
     if (prayerTimesData) {
         const parsedData = JSON.parse(prayerTimesData);
         const fajrTimeCell = document.getElementById('fajr-time');
+        const sunRiseCell = document.getElementById('sunrise-time');
         const dhuhrTimeCell = document.getElementById('dhuhr-time');
         const asrTimeCell = document.getElementById('asr-time');
         const maghribTimeCell = document.getElementById('maghrib-time');
         const ishaTimeCell = document.getElementById('isha-time');
         fajrTimeCell.textContent = parsedData.fajr;
+        sunRiseCell.textContent = parsedData.sunrise;
         dhuhrTimeCell.textContent = parsedData.dhuhr;
         asrTimeCell.textContent = parsedData.asr;
         maghribTimeCell.textContent = parsedData.maghrib;

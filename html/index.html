@@ -38,6 +38,11 @@
         <button type="submit" name="submit">Generate CSV</button>
         <br>
     </form>
+    <br>
+    <div id="csv-upload-container">
+        <input type="file" id="csv-file-input">
+        <button id="parse-csv-button">Upload Prayer Time</button>
+    </div>
 </div>
 
 
@@ -46,8 +51,6 @@
     <p>Wind Speed: <span id="wind-speed"></span></p>
 </div>
 
-<input type="file" id="csv-file-input">
-<button id="parse-csv-button">Upload Prayer Time</button>
 
 <table id="prayer-times">
     <thead>
@@ -64,6 +67,10 @@
         <td id="fajr-time"></td>
         <td class="additional-column" style="display: none;">2</td>
         <td class="additional-column" style="display: none;">0</td>
+    </tr>
+    <tr>
+        <td>Sunrise</td>
+        <td id="sunrise-time"></td>
     </tr>
     <tr>
         <td>Dhuhr</td>
