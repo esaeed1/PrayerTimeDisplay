@@ -40,24 +40,14 @@
     </form>
 </div>
 
-<form method="post" enctype="multipart/form-data">
-    <label for="prayer_times_file">Upload prayer times CSV file:</label>
-    <input type="file" name="prayer_times_file" id="prayer_times_file">
-    <input type="submit" value="Upload">
-</form>
-
-<?php
-if (isset($_POST['prayer_times_file'])) {
-    include '/php/process_csv.php';
-}
-?>
-
 
 <div id="weather-info" style="display:none;">
     <p>Temperature: <span id="temperature"></span></p>
     <p>Wind Speed: <span id="wind-speed"></span></p>
 </div>
 
+<input type="file" id="csv-file-input">
+<button id="parse-csv-button">Upload Prayer Time</button>
 
 <table id="prayer-times">
     <thead>
@@ -71,31 +61,31 @@ if (isset($_POST['prayer_times_file'])) {
     <tbody>
     <tr>
         <td>Fajr</td>
-        <td><?php echo ($times[0]);?></td>
+        <td id="fajr-time"></td>
         <td class="additional-column" style="display: none;">2</td>
         <td class="additional-column" style="display: none;">0</td>
     </tr>
     <tr>
         <td>Dhuhr</td>
-        <td><?php echo ($times[2]);?></td>
+        <td id="dhuhr-time"></td>
         <td class="additional-column" style="display: none;">2+2</td>
         <td class="additional-column" style="display: none;">2</td>
     </tr>
     <tr>
         <td>Asr</td>
-        <td><?php echo ($times[3]);?></td>
+        <td id="asr-time"></td>
         <td class="additional-column" style="display: none;">0</td>
         <td class="additional-column" style="display: none;">0</td>
     </tr>
     <tr>
         <td>Maghrib</td>
-        <td><?php echo ($times[5]);?></td>
+        <td id="maghrib-time"></td>
         <td class="additional-column" style="display: none;">0</td>
         <td class="additional-column" style="display: none;">2</td>
     </tr>
     <tr>
         <td>Isha</td>
-        <td><?php echo ($times[6]);?></td>
+        <td id="isha-time"></td>
         <td class="additional-column" style="display: none;">0</td>
         <td class="additional-column" style="display: none;">2</td>
     </tr>
@@ -104,6 +94,7 @@ if (isset($_POST['prayer_times_file'])) {
 
 <script src="/js/script.js"></script>
 <script src="/js/image.js"></script>
+<script src="/js/csv.js"></script>
 
 </body>
 

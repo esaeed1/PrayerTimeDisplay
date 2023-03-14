@@ -24,7 +24,7 @@ $csv = "Date,Fajr,Dhuhr,Asr,Maghrib,Isha\n";
 while ($current_date <= $end_date) {
     $times = $prayer->getPrayerTimes($current_date->getTimestamp());
 
-    $csv .= $current_date->format('M jS Y') . ',';
+    $csv .= $current_date->format('m-d-Y') . ',';
     $csv .= format_am_pm($times[0]) . ',';
     $csv .= format_am_pm($times[2]) . ',';
     $csv .= format_am_pm($times[3]) . ',';
