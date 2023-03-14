@@ -2,6 +2,13 @@
 const fileInput = document.getElementById('csv-file-input');
 const parseButton = document.getElementById('parse-csv-button');
 
+// select the prayer time elements
+const fajrTime = document.getElementById('fajr-time');
+const dhuhrTime = document.getElementById('dhuhr-time');
+const asrTime = document.getElementById('asr-time');
+const maghribTime = document.getElementById('maghrib-time');
+const ishaTime = document.getElementById('isha-time');
+
 // listen for file upload event
 parseButton.addEventListener('click', () => {
     const file = fileInput.files[0];
@@ -34,18 +41,11 @@ parseButton.addEventListener('click', () => {
         // find today's prayer time
         const todayPrayerTime = data.find((item) => item.Date === today);
         if (todayPrayerTime) {
-            const fajrTime = todayPrayerTime.Fajr;
-            const dhuhrTime = todayPrayerTime.Dhuhr;
-            const asrTime = todayPrayerTime.Asr;
-            const maghribTime = todayPrayerTime.Maghrib;
-            const ishaTime = todayPrayerTime.Isha;
-
-            // display prayer times
-            console.log(`Fajr: ${fajrTime}`);
-            console.log(`Dhuhr: ${dhuhrTime}`);
-            console.log(`Asr: ${asrTime}`);
-            console.log(`Maghrib: ${maghribTime}`);
-            console.log(`Isha: ${ishaTime}`);
+            fajrTime.textContent = todayPrayerTime.Fajr;
+            dhuhrTime.textContent = todayPrayerTime.Dhuhr;
+            asrTime.textContent = todayPrayerTime.Asr;
+            maghribTime.textContent = todayPrayerTime.Maghrib;
+            ishaTime.textContent = todayPrayerTime.Isha;
         } else {
             console.log('No prayer time data found for today.');
         }
