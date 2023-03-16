@@ -61,16 +61,22 @@ parseButton.addEventListener('click', () => {
             maghribTimeCell.textContent = maghribTime;
             ishaTimeCell.textContent = ishaTime;
 
+            // get today's date
+            const today = new Date();
+
+            // find the index of the first row for today's date
+            const startIndex = data.findIndex((item) => new Date(item.Date) >= today);
+
+            // filter the rows from today's date to the end of the year
+            const prayerTimesData = data.slice(startIndex).filter((item) => {
+                const date = new Date(item.Date);
+                return date.getFullYear() === today.getFullYear();
+            });
+
             // save the prayer times data to localStorage
-            const prayerTimesData = {
-                fajr: fajrTime,
-                sunrise: sunRiseTime,
-                dhuhr: dhuhrTime,
-                asr: asrTime,
-                maghrib: maghribTime,
-                isha: ishaTime
-            };
             localStorage.setItem('prayerTimesData', JSON.stringify(prayerTimesData));
+
+
         } else {
             console.log('No prayer time data found for today.');
         }
