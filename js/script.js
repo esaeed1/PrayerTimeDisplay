@@ -71,5 +71,7 @@ sunriseCheckbox.addEventListener("change", function() {
 
 function clearLocalStorage() {
     localStorage.clear();
+    sessionStorage.clear()
+
     location.reload(true);
 }
