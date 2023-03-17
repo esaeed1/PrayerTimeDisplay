@@ -46,20 +46,7 @@ parseButton.addEventListener('click', () => {
             const maghribTime = todayPrayerTime.Maghrib;
             const ishaTime = todayPrayerTime.Isha;
 
-            // update the table with the prayer times
-            const fajrTimeCell = document.getElementById('fajr-time');
-            const sunRiseCell = document.getElementById('sunrise-time');
-            const dhuhrTimeCell = document.getElementById('dhuhr-time');
-            const asrTimeCell = document.getElementById('asr-time');
-            const maghribTimeCell = document.getElementById('maghrib-time');
-            const ishaTimeCell = document.getElementById('isha-time');
-
-            fajrTimeCell.textContent = fajrTime;
-            sunRiseCell.textContent = sunRiseTime;
-            dhuhrTimeCell.textContent = dhuhrTime;
-            asrTimeCell.textContent = asrTime;
-            maghribTimeCell.textContent = maghribTime;
-            ishaTimeCell.textContent = ishaTime;
+            updatePrayerTimeTable(fajrTime, sunRiseTime, dhuhrTime, asrTime, maghribTime, ishaTime);
 
             // get today's date
             const today = new Date();
@@ -96,6 +83,23 @@ const formattedDate = `${month}-${day}-${year}`;
 // Retrieve the prayer times data from local storage
 const prayerTimesData = JSON.parse(localStorage.getItem('prayerTimesData'));
 
+function updatePrayerTimeTable(fajrTime, sunRiseTime, dhuhrTime, asrTime, maghribTime, ishaTime) {
+    // update the table with the prayer times
+    const fajrTimeCell = document.getElementById('fajr-time');
+    const sunRiseCell = document.getElementById('sunrise-time');
+    const dhuhrTimeCell = document.getElementById('dhuhr-time');
+    const asrTimeCell = document.getElementById('asr-time');
+    const maghribTimeCell = document.getElementById('maghrib-time');
+    const ishaTimeCell = document.getElementById('isha-time');
+
+    fajrTimeCell.textContent = fajrTime;
+    sunRiseCell.textContent = sunRiseTime;
+    dhuhrTimeCell.textContent = dhuhrTime;
+    asrTimeCell.textContent = asrTime;
+    maghribTimeCell.textContent = maghribTime;
+    ishaTimeCell.textContent = ishaTime;
+}
+
 // Check if prayerTimesData is not null or undefined before accessing it
 if (prayerTimesData) {
     // Find the prayer times for the current date
@@ -114,21 +118,7 @@ if (prayerTimesData) {
         const asrTime = todaysPrayerTimes.Asr;
         const maghribTime = todaysPrayerTimes.Maghrib;
         const ishaTime = todaysPrayerTimes.Isha;
-
-        // update the table with the prayer times
-        const fajrTimeCell = document.getElementById('fajr-time');
-        const sunRiseCell = document.getElementById('sunrise-time');
-        const dhuhrTimeCell = document.getElementById('dhuhr-time');
-        const asrTimeCell = document.getElementById('asr-time');
-        const maghribTimeCell = document.getElementById('maghrib-time');
-        const ishaTimeCell = document.getElementById('isha-time');
-
-        fajrTimeCell.textContent = fajrTime;
-        sunRiseCell.textContent = sunRiseTime;
-        dhuhrTimeCell.textContent = dhuhrTime;
-        asrTimeCell.textContent = asrTime;
-        maghribTimeCell.textContent = maghribTime;
-        ishaTimeCell.textContent = ishaTime;
+        updatePrayerTimeTable(fajrTime, sunRiseTime, dhuhrTime, asrTime, maghribTime, ishaTime);
     } else {
         console.log(`No prayer times found for ${formattedDate}`);
     }
@@ -136,15 +126,13 @@ if (prayerTimesData) {
     console.log('No prayer times data found');
 }
 
-//refresh page during 11:59pm so i can get new data for next day
+//refresh page so i can get new data for next day
 setInterval(function() {
     let nowHour = new Date().getHours()
-    let nowMinuts = new Date().getMinutes()
-    let nowSecunds = new Date().getSeconds()
+    let nowMinutes = new Date().getMinutes()
+    let nowSeconds = new Date().getSeconds()
 
-    console.log("Hour " + nowHour + " Minutes " + nowMinuts + " Secunds " + nowSecunds)
-
-    if (nowHour == 23 && nowMinuts == 59) {
+    if (nowHour == 0 && nowMinutes == 0 && nowSeconds <= 1){
         location.reload();
     }
 }, 1000);
