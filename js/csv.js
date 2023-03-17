@@ -73,6 +73,9 @@ parseButton.addEventListener('click', () => {
                 return date.getFullYear() === today.getFullYear();
             });
 
+            // need to add todays prayer time in local storage
+            prayerTimesData.unshift(data[data.findIndex((item) => new Date(item.Date).toDateString() === today.toDateString())]);
+
             // save the prayer times data to localStorage
             localStorage.setItem('prayerTimesData', JSON.stringify(prayerTimesData));
 
@@ -84,21 +87,51 @@ parseButton.addEventListener('click', () => {
 });
 
 // check if prayer times data is available in localStorage on reload
-window.addEventListener('load', () => {
-    const prayerTimesData = localStorage.getItem('prayerTimesData');
-    if (prayerTimesData) {
-        const parsedData = JSON.parse(prayerTimesData);
+const currentDate = new Date();
+const year = currentDate.getFullYear();
+const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+const day = String(currentDate.getDate()).padStart(2, '0');
+const formattedDate = `${month}-${day}-${year}`;
+
+// Retrieve the prayer times data from local storage
+const prayerTimesData = JSON.parse(localStorage.getItem('prayerTimesData'));
+
+// Check if prayerTimesData is not null or undefined before accessing it
+if (prayerTimesData) {
+    // Find the prayer times for the current date
+    let todaysPrayerTimes = null;
+    prayerTimesData.forEach((prayerTime) => {
+        if (prayerTime.Date === formattedDate) {
+            todaysPrayerTimes = prayerTime;
+        }
+    });
+
+    // Display the prayer times for the current date in table cells
+    if (todaysPrayerTimes) {
+        const fajrTime = todaysPrayerTimes.Fajr;
+        const sunRiseTime = todaysPrayerTimes.Sunrise;
+        const dhuhrTime = todaysPrayerTimes.Dhuhr;
+        const asrTime = todaysPrayerTimes.Asr;
+        const maghribTime = todaysPrayerTimes.Maghrib;
+        const ishaTime = todaysPrayerTimes.Isha;
+
+        // update the table with the prayer times
         const fajrTimeCell = document.getElementById('fajr-time');
         const sunRiseCell = document.getElementById('sunrise-time');
         const dhuhrTimeCell = document.getElementById('dhuhr-time');
         const asrTimeCell = document.getElementById('asr-time');
         const maghribTimeCell = document.getElementById('maghrib-time');
         const ishaTimeCell = document.getElementById('isha-time');
-        fajrTimeCell.textContent = parsedData.fajr;
-        sunRiseCell.textContent = parsedData.sunrise;
-        dhuhrTimeCell.textContent = parsedData.dhuhr;
-        asrTimeCell.textContent = parsedData.asr;
-        maghribTimeCell.textContent = parsedData.maghrib;
-        ishaTimeCell.textContent = parsedData.isha;
+
+        fajrTimeCell.textContent = fajrTime;
+        sunRiseCell.textContent = sunRiseTime;
+        dhuhrTimeCell.textContent = dhuhrTime;
+        asrTimeCell.textContent = asrTime;
+        maghribTimeCell.textContent = maghribTime;
+        ishaTimeCell.textContent = ishaTime;
+    } else {
+        console.log(`No prayer times found for ${formattedDate}`);
     }
-});
+} else {
+    console.log('No prayer times data found');
+}
