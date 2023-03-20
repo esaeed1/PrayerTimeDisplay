@@ -135,3 +135,16 @@ if (prayerTimesData) {
 } else {
     console.log('No prayer times data found');
 }
+
+//refresh page during 11:59pm so i can get new data for next day
+setInterval(function() {
+    let nowHour = new Date().getHours()
+    let nowMinuts = new Date().getMinutes()
+    let nowSecunds = new Date().getSeconds()
+
+    console.log("Hour " + nowHour + " Minutes " + nowMinuts + " Secunds " + nowSecunds)
+
+    if (nowHour == 23 && nowMinuts == 59) {
+        location.reload();
+    }
+}, 1000);
