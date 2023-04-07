@@ -49,9 +49,31 @@
         <button id="parse-csv-button">Upload Prayer Time</button>
     </div>
 
-    <label for="adjustable-minutes">Adjustable minutes:</label>
-    <input type="number" id="adjustable-minutes" name="adjustable-minutes" value="0">
-    
+    <label>
+        Adjust Fajr Iqamah:
+        <input type="number" id="fajr-adjustment" min="-60" max="60" value="15">
+    </label>
+    <br>
+    <label>
+        Adjust Dhuhr Iqamah:
+        <input type="number" id="dhuhr-adjustment" min="-60" max="60" value="15">
+    </label>
+    <br>
+    <label>
+        Adjust Asr Iqamah:
+        <input type="number" id="asr-adjustment" min="-60" max="60" value="15">
+    </label>
+    <br>
+    <label>
+        Adjust Maghrib Iqamah:
+        <input type="number" id="maghrib-adjustment" min="-60" max="60" value="7">
+    </label>
+    <br>
+    <label>
+        Adjust Isha Iqamah:
+        <input type="number" id="isha-adjustment" min="-60" max="60" value="10">
+    </label>
+
 </div>
 
 
@@ -66,7 +88,7 @@
     <tr>
         <th>Prayer</th>
         <th>Time</th>
-        <td class="iqamah-time" style="display:none;">Iqamah</td>
+        <th class="iqamah-time" style="display: none;">Iqamah</th>
         <th class="additional-column" style="display: none;">Before</th>
         <th class="additional-column" style="display: none;">After</th>
     </tr>
