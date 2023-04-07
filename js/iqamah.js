@@ -1,31 +1,18 @@
 const checkbox = document.getElementById('show-iqamah');
 const iqamahCells = document.querySelectorAll('.iqamah-time');
-checkbox.addEventListener('change', function() {
+checkbox.addEventListener('change', function () {
     iqamahCells.forEach(cell => cell.style.display = this.checked ? '' : 'none');
 
-    const fajrTimeCell = document.getElementById('fajr-time');
-    const dhuhrTimeCell = document.getElementById('dhuhr-time');
-    const asrTimeCell = document.getElementById('asr-time');
-    const maghribTimeCell = document.getElementById('maghrib-time');
-    const ishaTimeCell = document.getElementById('isha-time');
+    const iqamahFajrTimeCell = document.getElementById('fajr-iqamah');
+    const iqamahDhuhrTimeCell = document.getElementById('dhuhr-iqamah');
+    const iqamahAsrTimeCell = document.getElementById('asr-iqamah');
+    const iqamahMaghribTimeCell = document.getElementById('maghrib-iqamah');
+    const iqamahIshaTimeCell = document.getElementById('isha-iqamah');
 
-    const iFajrTimeCell = document.getElementById('fajr-iqamah');
-    const iDhuhrTimeCell = document.getElementById('dhur-iqamah');
-    const iAsrTimeCell = document.getElementById('asr-iqamah');
-    const iMaghribTimeCell = document.getElementById('maghrib-iqamah');
-    const iIshaTimeCell = document.getElementById('isha-iqamah');
-
-    console.log(fajrTimeCell);
-    console.log(dhuhrTimeCell);
-    console.log(asrTimeCell);
-    console.log(maghribTimeCell);
-    console.log(ishaTimeCell);
-
-
-    iFajrTimeCell.textContent = fajrTimeCell.textContent;
-    iDhuhrTimeCell.textContent = dhuhrTimeCell.textContent;
-    iAsrTimeCell.textContent = asrTimeCell.textContent;
-    iMaghribTimeCell.textContent = maghribTimeCell.textContent;
-    iIshaTimeCell.textContent = ishaTimeCell.textContent;
+    iqamahFajrTimeCell.textContent = (document.getElementById('fajr-time')).textContent;
+    iqamahDhuhrTimeCell.textContent = (document.getElementById('dhuhr-time')).textContent;
+    iqamahAsrTimeCell.textContent = (document.getElementById('asr-time')).textContent;
+    iqamahMaghribTimeCell.textContent = (document.getElementById('maghrib-time')).textContent;
+    iqamahIshaTimeCell.textContent = (document.getElementById('isha-time')).textContent;
 
 });
