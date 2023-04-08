@@ -12,7 +12,7 @@ toggleWeatherInfo.addEventListener('click', () => {
                 const temperatureElement = document.getElementById('temperature');
                 const windSpeedElement = document.getElementById('wind-speed');
 
-                temperatureElement.textContent = temperature + ' °F';
+                temperatureElement.textContent = temperature + '°F';
                 windSpeedElement.textContent = windSpeed;
             })
             .catch(error => {
