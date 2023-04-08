@@ -33,9 +33,11 @@ ishaAdjustmentInput.addEventListener('change', updateIqamahTimes);
 function addMinutes(timeString, minutes) {
     const [hours, minutesStr] = timeString.split(':');
     const totalMinutes = parseInt(hours) * 60 + parseInt(minutesStr) + minutes;
-    const newHours = Math.floor(totalMinutes / 60).toString().padStart(2, '0');
+    const newHours = Math.floor(totalMinutes / 60);
     const newMinutes = (totalMinutes % 60).toString().padStart(2, '0');
-    return `${newHours}:${newMinutes}`;
+    const ampm = newHours >= 12 ? 'PM' : 'AM';
+    const displayHours = (newHours % 12 || 12).toString().padStart(2, '0');
+    return `${displayHours}:${newMinutes} ${ampm}`;
 }
 
 function updateIqamahTimes() {
