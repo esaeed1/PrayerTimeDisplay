@@ -31,14 +31,16 @@ maghribAdjustmentInput.addEventListener('change', updateIqamahTimes);
 ishaAdjustmentInput.addEventListener('change', updateIqamahTimes);
 
 function addMinutes(timeString, minutes) {
-    const [hours, minutesStr] = timeString.split(':');
+    const [time, ampm] = timeString.split(' ');
+    const [hours, minutesStr] = time.split(':');
     const totalMinutes = parseInt(hours) * 60 + parseInt(minutesStr) + minutes;
-    const newHours = Math.floor(totalMinutes / 60);
+    const newHours = Math.floor(totalMinutes / 60) % 12;
     const newMinutes = (totalMinutes % 60).toString().padStart(2, '0');
-    const ampm = newHours >= 12 ? 'PM' : 'AM';
-    const displayHours = (newHours % 12 || 12).toString().padStart(2, '0');
-    return `${displayHours}:${newMinutes} ${ampm}`;
+    const newAmpm = totalMinutes < 720 ? ampm : ampm === 'AM' ? 'PM' : 'AM';
+    const displayHours = (newHours || 12).toString().padStart(2, '0');
+    return `${displayHours}:${newMinutes} ${newAmpm}`;
 }
+
 
 function updateIqamahTimes() {
     iqamahFajrTimeCell.textContent = addMinutes(fajrTimeCell.textContent, parseInt(fajrAdjustmentInput.value));
