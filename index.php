@@ -1,5 +1,6 @@
 <html lang="EN">
 <meta charset="UTF-8">
+<link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
 
 <head>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
