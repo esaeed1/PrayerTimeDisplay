@@ -36,10 +36,6 @@
     <label for="toggle-sunrise">Show Sunrise Time</label>
     <br>
     <label><input type="checkbox" id="show-iqamah"> Show Iqamah Time</label>
-    <br>
-    <label for="image-upload">Upload Banner:</label>
-    <input type="file" id="image-upload">
-    <br>
     <form method="POST" action="/php/downloadYearlyTime.php">
         <br>
         <button type="submit" name="submit">Generate CSV</button>
@@ -78,13 +74,6 @@
 
 </div>
 
-
-<div id="weather-info" style="display:none;">
-    <p>Temperature: <span id="temperature"></span></p>
-    <p>Wind Speed: <span id="wind-speed"></span></p>
-</div>
-
-
 <table id="prayer-times">
     <thead>
     <tr>
@@ -111,28 +100,28 @@
     <tr>
         <td>Dhuhr</td>
         <td id="dhuhr-time"></td>
-        <td id="dhuhr-iqamah" class="iqamah-time" style="display: none;" ></td>
+        <td id="dhuhr-iqamah" class="iqamah-time" style="display: none;"></td>
         <td class="additional-column" style="display: none;">2+2</td>
         <td class="additional-column" style="display: none;">2</td>
     </tr>
     <tr>
         <td>Asr</td>
         <td id="asr-time"></td>
-        <td id="asr-iqamah" class="iqamah-time" style="display: none;" ></td>
+        <td id="asr-iqamah" class="iqamah-time" style="display: none;"></td>
         <td class="additional-column" style="display: none;">0</td>
         <td class="additional-column" style="display: none;">0</td>
     </tr>
     <tr>
         <td>Maghrib</td>
         <td id="maghrib-time"></td>
-        <td id="maghrib-iqamah" class="iqamah-time" style="display: none;" ></td>
+        <td id="maghrib-iqamah" class="iqamah-time" style="display: none;"></td>
         <td class="additional-column" style="display: none;">0</td>
         <td class="additional-column" style="display: none;">2</td>
     </tr>
     <tr>
         <td>Isha</td>
         <td id="isha-time"></td>
-        <td id="isha-iqamah" class="iqamah-time" style="display: none;" ></td>
+        <td id="isha-iqamah" class="iqamah-time" style="display: none;"></td>
         <td class="additional-column" style="display: none;">0</td>
         <td class="additional-column" style="display: none;">2</td>
     </tr>
@@ -144,11 +133,9 @@
 <script src="/js/csv.js"></script>
 <script src="/js/iqamah.js"></script>
 <script src="/js/sunnahRawatib.js"></script>
-<script src="/js/weather.js"></script>
 <script src="/js/mp3.js"></script>
 
 <button onclick="clearLocalStorage()">Clear localStorage</button>
-
 
 
 </body>
